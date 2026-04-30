@@ -120,7 +120,7 @@ function createImagePopup(feature, layer) {
 }
 
 // TASK 5: Load GeoJSON data
-fetch("../dzongkhags.geojson")
+fetch("./dzongkhags.geojson")
   .then(response => {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -130,7 +130,7 @@ fetch("../dzongkhags.geojson")
   .then(data => {
     console.log(" GeoJSON loaded successfully!");
     console.log(`Total dzongkhags: ${data.features.length}`);
-  fetch("../gps_first_order.geojson")
+  fetch("./gps_first_order.geojson")
   .then(response => response.json())
   .then(data => {
     L.geoJSON(data, {
