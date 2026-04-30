@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dzongkhag map</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    #map {
+      height: calc(100vh - 56px);
+      width: 100%;
+    }
+
+    .legend-color {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      margin-right: 8px;
+      border-radius: 3px;
+    }
+    
+    .custom-popup .leaflet-popup-content-wrapper {
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+    
+    .custom-popup .leaflet-popup-tip {
+      background: white;
+    }
+    
+    .card-header {
+      font-weight: bold;
+    }
+    
+    .info-text {
+      font-size: 12px;
+      color: #666;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+      <div class="d-flex align-items-center">
+        <img src="https://www.jnec.edu.bt/wp-content/uploads/2022/06/JNEC-Logo-100x100-1.png"
+             alt="JNEC Logo" width="40" height="40" class="me-2">
+        <span class="navbar-brand mb-0 h1">Case</span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-md-3 col-lg-2 bg-light border-end p-3" style="height: calc(100vh - 56px); overflow-y: auto;">
+        <h5 class="mb-3">Map Tools</h5>
+
+        <button class="btn btn-primary w-100 mb-3" onclick="zoomToBhutan()">
+          🔍 Zoom to Bhutan
+        </button>
+
+        <div class="card mb-3">
+          <div class="card-header bg-info text-white">
+            Layers
+          </div>
+          <div class="card-body">
+            <p class="small mb-0">Use the layer control icon <strong>(⊞)</strong> on the top-right of the map to switch between:</p>
+            <ul class="small mt-2 mb-0">
+              <li> OpenStreetMap</li>
+              <li>Satellite View</li>
+              <li>Dzongkhag Boundaries</li>
+              <li>GPS station</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card mb-3">
+          <div class="card-header bg-warning">
+            Legend
+          </div>
+          <div class="card-body">
+            <p><span class="legend-color" style="background: #ff9800; border: 1px solid #000;"></span> Dzongkhag Boundary</p>
+            <p><span class="legend-color" style="background: #ff9800; border: 1px solid #4d0808;"></span>GPS Station</p>
+        
+  
+           
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header bg-success text-white">
+            💡 Instructions
+          </div>
+          <div class="card-body">
+            <p class="small mb-1">• <strong>Hover</strong> over any district to see its image</p>
+            <p class="small mb-1">• <strong>Click</strong> to keep popup open</p>
+            <p class="small mb-1">• Use <strong>+/-</strong> to zoom in/out</p>
+            <p class="small mb-0">• <strong>Drag</strong> to pan the map</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-9 col-lg-10 p-0">
+        <div id="map"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="chime.js"></script>
+
+</body>
+</html>
